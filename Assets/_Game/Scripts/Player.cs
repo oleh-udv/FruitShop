@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Game.Enums;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,21 +12,25 @@ namespace Game
         [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private FloatingJoystick _joystick;
 
-        private bool _canMove;
+        [Space]
+        [SerializeField] private Animator _animator;
 
-        private void Start()
-        {
-            _canMove = true;
-        }
+        private bool _isMove;
 
         private void Update()
         {
-            if (Input.GetMouseButton(0) && _canMove)
+            if (Input.GetMouseButton(0))
             {
                 Vector3 direction = _joystick.Direction;
                 direction.z = direction.y;
                 direction.y = 0;
                 Move(direction);
+            }
+            else if(_isMove)
+            {
+                _animator.SetInteger("State", 0);
+                _agent.SetDestination(transform.localPosition);
+                _isMove = false;
             }
         }
 
@@ -38,6 +41,12 @@ namespace Game
             _agent.acceleration = _gameSettings.PlayerAcceleration;
 
             _agent.SetDestination(transform.localPosition + direction);
+
+            if (!_isMove)
+            {
+                _animator.SetInteger("State", 1);
+                _isMove = true;
+            }
         }
     }
 }

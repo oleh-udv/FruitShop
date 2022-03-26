@@ -557,6 +557,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4537922485924075278, guid: bd24779934f1c2d44afd2ba2bfdcef06, type: 3}
   m_PrefabInstance: {fileID: 94747880}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &112353819 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5205040494221856517, guid: dcf013d02a932a04bbe203cfdcbeb6bc, type: 3}
+  m_PrefabInstance: {fileID: 4477608109263444699}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &146200735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4681,6 +4686,7 @@ MonoBehaviour:
   _gameSettings: {fileID: 11400000, guid: 01f2410142b7747489b4709777c7bb70, type: 2}
   _agent: {fileID: 1042642065}
   _joystick: {fileID: 642110933}
+  _animator: {fileID: 112353819}
 --- !u!195 &1042642065
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7954,6 +7960,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5205040494221856517, guid: dcf013d02a932a04bbe203cfdcbeb6bc, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4bbd83768dc403a4fbfe1f7decb5a5ee, type: 2}
     - target: {fileID: 5693844999500243015, guid: dcf013d02a932a04bbe203cfdcbeb6bc, type: 3}
       propertyPath: m_Layer
       value: 6
