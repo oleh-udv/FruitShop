@@ -1,7 +1,10 @@
 using Game.Enums;
 using UnityEngine;
 
-public class Product : MonoBehaviour
+namespace Game
 {
-    [SerializeField] private ProductType _type;
+    public class Product : MonoBehaviour
+    {
+        [SerializeField] private ProductType _type;
+    }
 }

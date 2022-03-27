@@ -57,6 +57,7 @@ namespace Game
         {
             var createdObject = Object.Instantiate(_prefab, _container);
             _pool.Add(createdObject);
+            createdObject.gameObject.SetActive(false);
             return createdObject;
         }
         #endregion

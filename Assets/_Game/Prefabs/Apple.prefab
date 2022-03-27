@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 640022941888266351}
+  - component: {fileID: 4584791739830495966}
   m_Layer: 0
   m_Name: Apple
   m_TagString: Untagged
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4584791739830495966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408979058871604925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4874c692d8465ef48aad278e3c0165f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
 --- !u!1001 &3491018424764230441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -102,7 +116,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3655663671736b3449501c4d6febc97f, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9050146760299730365, guid: 54d2139f0da551543b0e465e16f92722, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 54d2139f0da551543b0e465e16f92722, type: 3}
 --- !u!4 &4433944775878871014 stripped
 Transform:

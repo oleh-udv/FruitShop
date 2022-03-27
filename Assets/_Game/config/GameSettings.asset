@@ -16,3 +16,6 @@ MonoBehaviour:
   _playerAngularSpeed: 250
   _playerAcceleration: 15
   _cameraSpeed: 30
+  _issuingStandSpawnDelay: 3
+  _productScaleTime: 0.1
+  _countProductPoolObjects: 10
