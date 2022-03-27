@@ -5,6 +5,7 @@ namespace Game
     [CreateAssetMenu(menuName = "Game/GameSettings")]
     public class GameSettings : ScriptableObject
     {
+        #region Fields
         [Header("PlayerSettings")]
         [Range(5f, 30f)]
         [SerializeField] private float _playerSpeed;
@@ -16,6 +17,18 @@ namespace Game
         [SerializeField] private float _timeWaitInTrigger;
         [Range(1, 10)]
         [SerializeField] private int _maxProductInHands;
+
+        [Header("BuyerSettings")]
+        [Range(5f, 30f)]
+        [SerializeField] private float _buyerSpeed;
+        [Range(50f, 500f)]
+        [SerializeField] private float _buyerAngularSpeed;
+        [Range(5f, 30f)]
+        [SerializeField] private float _buyerAcceleration;
+        [Range(5f, 100f)]
+        [SerializeField] private float _buyerSpawnDelay;
+        [Range(1, 5)]
+        [SerializeField] private int _maxBuyers;
 
         [Header("CameraSettings")]
         [Min(3f)]
@@ -32,23 +45,29 @@ namespace Game
         [Header("Pool")]
         [Range(1, 100)]
         [SerializeField] private int _countProductPoolObjects;
+        [SerializeField] private int _countBuyersPoolObjects;
 
         [Header("Animations")]
         [Range(0f, 1f)]
         [SerializeField] private float _productScaleTime;
         [Range(0f, 1f)]
         [SerializeField] private float _productMovementTime;
-        [Range(0f, 0.5f)]
-        [SerializeField] private float _productPunchTime;
-        [Range(0f, 0.5f)]
-        [SerializeField] private float _productScaleImpulse;
+        #endregion
 
+        #region Getters
         //PlayerSettings
         public float PlayerSpeed => _playerSpeed;
         public float PlayerAngularSpeed => _playerAngularSpeed;
         public float PlayerAcceleration => _playerAcceleration;
         public float TimeWaitInTrigger => _timeWaitInTrigger;
-        public float MaxProductInHands => _maxProductInHands;
+        public int MaxProductInHands => _maxProductInHands;
+
+        //BuyerSettings
+        public float BuyerSpeed => _buyerSpeed;
+        public float BuyerAngularSpeed => _buyerAngularSpeed;
+        public float BuyerAcceleration => _buyerAcceleration;
+        public float BuyerSpawnDelay => _buyerSpawnDelay;
+        public int MaxBuyers => _maxBuyers;
 
         //CameraSettings
         public float CameraSpeed => _cameraSpeed;
@@ -60,11 +79,11 @@ namespace Game
 
         //Pool
         public int CountProductPoolObjects => _countProductPoolObjects;
+        public int CountBuyersPoolObjects => _countBuyersPoolObjects;
 
         //Animations
         public float ProductScaleTime => _productScaleTime;
         public float ProductMovementTime => _productMovementTime;
-        public float ProductPunchTime => _productPunchTime;
-        public float ProductScaleImpulse => _productScaleImpulse;
+        #endregion
     }
 }

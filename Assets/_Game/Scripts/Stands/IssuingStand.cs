@@ -40,7 +40,7 @@ namespace Game
             if (_waitTween == null)
             {
                 _playerInTrigger = true;
-                _waitTween = DOVirtual.DelayedCall(_gameSettings.TimeWaitInTrigger, () => GiveItemToPlayer(player));
+                _waitTween = DOVirtual.DelayedCall(_gameSettings.TimeWaitInTrigger, () => GiveProductToPlayer(player));
             }
         }
 
@@ -76,7 +76,7 @@ namespace Game
             _isFull = _productPoints.Where((p) => p.HasProduct == true).ToList().Count == _productPoints.Count;
         }
 
-        private void GiveItemToPlayer(Player player)
+        private void GiveProductToPlayer(Player player)
         {
             if (_playerInTrigger)
             {
@@ -93,7 +93,7 @@ namespace Game
                 }
             }
 
-            DOVirtual.DelayedCall(_gameSettings.GiveProductsDelay, () => GiveItemToPlayer(player));
+            DOVirtual.DelayedCall(_gameSettings.GiveProductsDelay, () => GiveProductToPlayer(player));
         }
         #endregion
 

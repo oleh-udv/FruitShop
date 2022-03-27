@@ -13,6 +13,10 @@ namespace Game
         [SerializeField] private ProductType _typeProduct; 
         [SerializeField] private List<ProductPoint> _productPoints;
 
+        [Space]
+        [SerializeField] private List<Transform> _getProductsPoints;
+
+        private List<Transform> _freeGetProductsPoints = new List<Transform>();
         private Tween _waitTween;
 
         private int _activePointIndex;
@@ -21,7 +25,44 @@ namespace Game
 
         private bool IsFull => _activePointIndex == _productPoints.Count;
 
+        public ProductType TypeProduct => _typeProduct;
+
+        public bool HaveProduct => _activePointIndex > 0;
+
+        #region UnityMethods
+        private void Start()
+        {
+            _freeGetProductsPoints.AddRange(_getProductsPoints);
+        }
+        #endregion
+
         #region PublicMethods
+        public Product GiveProduct()
+        {
+            if (HaveProduct == false)
+                throw new System.Exception("Index out of range");
+
+            var point = _productPoints[_activePointIndex - 1];
+            var product = point.Product;
+
+            point.RemoveProduct();
+            _activePointIndex--;
+
+            return product;
+        }
+
+        public Transform GetProductsPoint()
+        {
+            var point = _freeGetProductsPoints[0];
+            _freeGetProductsPoints.Remove(point);
+            return point;
+        }
+
+        public void ReleasePoint(Transform point)
+        {
+            _freeGetProductsPoints.Add(point);
+        }
+
         public void TriggerEnterAction(Player player)
         {
             if (_waitTween == null)

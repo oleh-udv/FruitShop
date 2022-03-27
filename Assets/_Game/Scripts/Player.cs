@@ -65,11 +65,7 @@ namespace Game
             product.transform.parent = _productsContainer;
 
             product.transform.DORotate(Vector3.zero, _gameSettings.ProductMovementTime);
-            product.transform.DOLocalMove(_productsPoint.localPosition, _gameSettings.ProductMovementTime)
-                .OnComplete(() => 
-                {
-                    product.transform.DOPunchScale(Vector3.one * _gameSettings.ProductScaleImpulse, _gameSettings.ProductPunchTime, 1);
-                });
+            product.transform.DOLocalMove(_productsPoint.localPosition, _gameSettings.ProductMovementTime);
 
             _productsPoint.localPosition += Vector3.up * product.UpOffset;
         }

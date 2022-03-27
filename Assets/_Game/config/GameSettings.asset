@@ -15,13 +15,18 @@ MonoBehaviour:
   _playerSpeed: 15
   _playerAngularSpeed: 250
   _playerAcceleration: 15
-  _timeWaitInTrigger: 2
+  _timeWaitInTrigger: 0.5
   _maxProductInHands: 5
+  _buyerSpeed: 7
+  _buyerAngularSpeed: 150
+  _buyerAcceleration: 7
+  _buyerSpawnDelay: 5
+  _maxBuyers: 3
   _cameraSpeed: 30
   _issuingStandSpawnDelay: 3
   _giveProductsDelay: 0.2
+  _takeProductsDelay: 0
   _countProductPoolObjects: 10
+  _countBuyersPoolObjects: 5
   _productScaleTime: 0.1
   _productMovementTime: 0.2
-  _productPunchTime: 0.1
-  _productScaleImpulse: 0.1
