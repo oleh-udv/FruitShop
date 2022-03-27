@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
-    public class Pool <T> where T : MonoBehaviour
+    public class Pool <T> where T : Component
     {
         private T _prefab;
         private Transform _container;

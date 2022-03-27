@@ -1,6 +1,5 @@
 using DG.Tweening;
 using Game.Enums;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

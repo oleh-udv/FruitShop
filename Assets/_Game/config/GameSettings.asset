@@ -25,8 +25,11 @@ MonoBehaviour:
   _cameraSpeed: 30
   _issuingStandSpawnDelay: 3
   _giveProductsDelay: 0.2
-  _takeProductsDelay: 0
-  _countProductPoolObjects: 10
+  _takeProductsDelay: 0.1
+  _countProductPoolObjects: 30
   _countBuyersPoolObjects: 5
   _productScaleTime: 0.1
   _productMovementTime: 0.2
+  _punchCounterTime: 0.2
+  _counterImpulse: 1.1
+  _counterValueChangeTime: 0.15

@@ -45,6 +45,7 @@ namespace Game
         [Header("Pool")]
         [Range(1, 100)]
         [SerializeField] private int _countProductPoolObjects;
+        [Range(1, 100)]
         [SerializeField] private int _countBuyersPoolObjects;
 
         [Header("Animations")]
@@ -52,6 +53,14 @@ namespace Game
         [SerializeField] private float _productScaleTime;
         [Range(0f, 1f)]
         [SerializeField] private float _productMovementTime;
+
+        [Header("UI")]
+        [Range(0f, 0.5f)]
+        [SerializeField] private float _punchCounterTime;
+        [Range(1f, 1.5f)]
+        [SerializeField] private float _counterImpulse;
+        [Range(0f, 0.5f)]
+        [SerializeField] private float _counterValueChangeTime;
         #endregion
 
         #region Getters
@@ -84,6 +93,11 @@ namespace Game
         //Animations
         public float ProductScaleTime => _productScaleTime;
         public float ProductMovementTime => _productMovementTime;
+
+        //UI
+        public float PunchCounterTime => _punchCounterTime;
+        public float CounterImpulse => _counterImpulse;
+        public float CounterValueChangeTime => _counterValueChangeTime;
         #endregion
     }
 }

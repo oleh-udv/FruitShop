@@ -134,6 +134,8 @@ namespace Game
             _isReturns = true;
             _animator.SetInteger("State", 1);
             _stand.ReleasePoint(_movePoint);
+
+            MoneyCounter.Instance.UpdateMoney(_productsInHands.Count);
         }
         #endregion
     }
