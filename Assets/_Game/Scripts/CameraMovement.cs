@@ -11,6 +11,7 @@ namespace Game
 
         Vector3 _offset;
 
+        #region UnityMethods
         private void Start()
         {
             _offset = transform.position - _player.position;
@@ -20,5 +21,6 @@ namespace Game
         {
             transform.position = Vector3.Lerp(transform.position, _player.position + _offset, Time.deltaTime * _gameSettings.CameraSpeed);
         }
+        #endregion
     }
 }

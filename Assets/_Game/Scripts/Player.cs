@@ -1,4 +1,3 @@
-using Game.Enums;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,6 +16,7 @@ namespace Game
 
         private bool _isMove;
 
+        #region UnityMethods
         private void Update()
         {
             if (Input.GetMouseButton(0))
@@ -33,7 +33,9 @@ namespace Game
                 _isMove = false;
             }
         }
+        #endregion
 
+        #region PrivateMethods
         private void Move(Vector3 direction)
         {
             _agent.speed = _gameSettings.PlayerSpeed;
@@ -48,5 +50,6 @@ namespace Game
                 _isMove = true;
             }
         }
+        #endregion
     }
 }
