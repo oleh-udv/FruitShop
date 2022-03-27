@@ -35,27 +35,19 @@ namespace Game
         private bool _isReturns;
         private bool _isKeepProducts;
 
+        private bool _isCameToPoint => _agent.path != null && !_agent.pathPending && _agent.remainingDistance <= _agent.stoppingDistance;
+
         public event Action<Buyer> OnPuthComplete;
 
         #region UnityMethods
         private void Update()
         {
-            if (gameObject.activeSelf 
-                    && _agent.path != null
-                    && !_agent.pathPending
-                    && _agent.remainingDistance <= _agent.stoppingDistance)
+            if (gameObject.activeSelf && _isCameToPoint)
             {
                 if (_isReturns)
-                {
                     PuthComplete();
-                }
-                else if (_isKeepProducts)
-                {
-                }
-                else
-                {
+                else if(_isKeepProducts == false)
                     ReceiptProducts();
-                }
             }
         }
         #endregion

@@ -28,7 +28,6 @@ namespace Game
 
             UpdateMoney(0);
         }
-
         #endregion
 
         #region PublicMethods

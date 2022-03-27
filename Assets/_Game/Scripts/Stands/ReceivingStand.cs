@@ -9,6 +9,7 @@ namespace Game
     {
         [SerializeField] private GameSettings _gameSettings;
 
+        [Space]
         [SerializeField] private ProductType _typeProduct; 
         [SerializeField] private List<ProductPoint> _productPoints;
 

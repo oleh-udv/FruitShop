@@ -77,6 +77,8 @@ namespace Game
         private void ClearInactiveBuyer(Buyer buyer)
         {
             _activeBuyers.Remove(buyer);
+            AddBuyer();
+
             _smoke.Play();
             buyer.OnPuthComplete -= ClearInactiveBuyer;
         }
