@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
+  _upOffset: 0.75
 --- !u!1001 &3491018424764230441
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ namespace Game
         private Product _product;
         private bool _productReady;
 
-        public Product Product => Product;
+        public Product Product => _product;
         public bool HasProduct => _product != null;
         public bool ProductReady => _productReady && HasProduct;
 
@@ -23,6 +23,11 @@ namespace Game
             _product = product;
 
             product.transform.DOScale(Vector3.one, animationTime).OnComplete(() => _productReady = true);
+        }
+
+        public void RemoveProduct()
+        {
+            _product = null;
         }
         #endregion
     }

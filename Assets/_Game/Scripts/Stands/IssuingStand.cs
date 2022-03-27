@@ -1,5 +1,7 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Game
@@ -19,7 +21,11 @@ namespace Game
 
         private List<Transform> _freePoints;
 
-        private bool _isFill;
+        private Tween _waitTween;
+
+        private bool _isFull;
+        private bool _isFilling;
+        private bool _playerInTrigger;
 
         #region UnityMethods
         private void Start()
@@ -31,10 +37,19 @@ namespace Game
         #region PublicMethods
         public void TriggerEnterAction(Player player)
         {
+            if (_waitTween == null)
+            {
+                _playerInTrigger = true;
+                _waitTween = DOVirtual.DelayedCall(_gameSettings.TimeWaitInTrigger, () => GiveItemToPlayer(player));
+            }
         }
 
         public void TriggerExitAction(Player player)
         {
+            _playerInTrigger = false;
+
+            _waitTween?.Kill(false);
+            _waitTween = null;
         }
         #endregion
 
@@ -47,40 +62,60 @@ namespace Game
 
         private void FillingStand(bool fillInstantly = false)
         {
+            if (_isFilling)
+                return;
+                
             CheckFillStand();
 
-            if (_isFill == false)
+            if (_isFull == false)
                 StartCoroutine(FillStand(fillInstantly ? 0f : _gameSettings.IssuingStandSpawnDelay));
         }
 
         private void CheckFillStand()
         {
-            foreach (var point in _productPoints)
+            _isFull = _productPoints.Where((p) => p.HasProduct == true).ToList().Count == _productPoints.Count;
+        }
+
+        private void GiveItemToPlayer(Player player)
+        {
+            if (_playerInTrigger)
             {
-                if (!point.HasProduct)
+                foreach (var point in _productPoints)
                 {
-                    _isFill = false;
-                    return;
+                    if (point.ProductReady && player.CanTakeProducts)
+                    {
+                        player.TakeProduct(point.Product);
+                        point.RemoveProduct();
+                        _isFull = false;
+                        FillingStand();
+                        break;
+                    }
                 }
             }
 
-            _isFill = true;
+            DOVirtual.DelayedCall(_gameSettings.GiveProductsDelay, () => GiveItemToPlayer(player));
         }
         #endregion
 
         #region Coroutines
         private IEnumerator FillStand(float delayTime)
         {
+            _isFilling = true;
             yield return new WaitForSeconds(delayTime);
-
             foreach (var point in _productPoints)
             {
                 if (point.HasProduct)
                     continue;
 
-                point.AddProduct(_pool.GetFreeElement(), _gameSettings.ProductScaleTime);
+                var element = _pool.GetFreeElement();
+                element.transform.localScale = Vector3.zero;
+
+                point.AddProduct(element, _gameSettings.ProductScaleTime);
                 yield return new WaitForSeconds(delayTime);
             }
+
+            _isFilling = false;
+            FillingStand();
         }
         #endregion
     }
