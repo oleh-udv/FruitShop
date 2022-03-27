@@ -20,7 +20,7 @@ MonoBehaviour:
   _buyerSpeed: 7
   _buyerAngularSpeed: 150
   _buyerAcceleration: 7
-  _buyerSpawnDelay: 5
+  _buyerSpawnDelay: 30
   _maxBuyers: 3
   _cameraSpeed: 30
   _issuingStandSpawnDelay: 3

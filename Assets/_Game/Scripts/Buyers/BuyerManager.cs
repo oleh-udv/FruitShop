@@ -17,6 +17,9 @@ namespace Game
         [Space]
         [SerializeField] private List<ReceivingStand> _stands;
 
+        [Space]
+        [SerializeField] private ParticleSystem _smoke;
+
         private List<Buyer> _activeBuyers = new List<Buyer>();
         private Pool<Buyer> _pool;
 
@@ -62,6 +65,8 @@ namespace Game
 
             buyer.OnPuthComplete += ClearInactiveBuyer;
 
+            _smoke.Play();
+
             DOVirtual.DelayedCall(_gameSettings.BuyerSpawnDelay, () => 
             {
                 _canSpawnBuyer = true;
@@ -72,6 +77,7 @@ namespace Game
         private void ClearInactiveBuyer(Buyer buyer)
         {
             _activeBuyers.Remove(buyer);
+            _smoke.Play();
             buyer.OnPuthComplete -= ClearInactiveBuyer;
         }
         #endregion
